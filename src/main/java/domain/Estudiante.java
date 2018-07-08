@@ -16,6 +16,8 @@ public class Estudiante {
 		this.asignaciones = new ArrayList<Asignacion>();
 	}
 	
+	public Estudiante() {}
+	
 	public void nuevaAsignacion(Asignacion asignacion) {
 		asignaciones.add(asignacion);
 	}	
