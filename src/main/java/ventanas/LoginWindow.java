@@ -14,7 +14,6 @@ import org.uqbar.lacar.ui.model.bindings.Binding;
 
 import data.DataEstudiantes;
 import domain.Estudiante;
-import model.EstudianteModel;
 import view_model.LoginViewModel;
 
 public class LoginWindow extends SimpleWindow<LoginViewModel>{
@@ -34,13 +33,13 @@ public class LoginWindow extends SimpleWindow<LoginViewModel>{
 		
 		new Label(mainPanel).setText("Loguearse como:");
 		
-		Selector<EstudianteModel> selector = new Selector<EstudianteModel>(mainPanel);		
+		Selector<Estudiante> selector = new Selector<Estudiante>(mainPanel);		
 		selector.bindValueToProperty("seleccionado");
 		
-		Binding<EstudianteModel, Selector<EstudianteModel>, ListBuilder<EstudianteModel>> bindingItems = 
-				selector.bindItems(new ObservableProperty<EstudianteModel>(this.getModelObject(), "estudiantes"));
+		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> bindingItems = 
+				selector.bindItems(new ObservableProperty<Estudiante>(this.getModelObject(), "estudiantes"));
 		
-		bindingItems.setAdapter(new PropertyAdapter(EstudianteModel.class, "nombre"));
+		bindingItems.setAdapter(new PropertyAdapter(Estudiante.class, "nombre"));
 				
 		new Button(mainPanel)
 	    .setCaption("Log in")

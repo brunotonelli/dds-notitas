@@ -2,7 +2,11 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.uqbar.commons.model.annotations.Observable;
+
+@Observable
 public class Estudiante {
 	private String nombre;
 	private String legajo;
@@ -22,27 +26,45 @@ public class Estudiante {
 		asignaciones.add(asignacion);
 	}	
 	
-	public String nombre() {
+	public void evaluarlo(Asignacion asignacion, Nota nota) {
+		Optional<Asignacion> asd = asignaciones.stream().filter(a -> a.esIgualA(asignacion)).findFirst();
+		if (!asd.isPresent()) {
+			nuevaAsignacion(asignacion);
+			asignacion.evaluar(nota);
+		}
+		else
+			asd.get().evaluar(nota);
+	}
+	
+	public String getNombre() {
 		return nombre;
 	}
 	
-	public String legajo() {
+	public String getLegajo() {
 		return legajo;
 	}
 	
-	public String usuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 	
-	public void nombre(String nombre) {
+	public void getNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
-	public void legajo(String legajo) {
+	public void getLegajo(String legajo) {
 		this.legajo = legajo;
 	}
 	
-	public void usuario(String usuario) {
+	public void getUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	
+	public List<Asignacion> getAsignaciones() {
+		return asignaciones;
+	}
+	
+	public void setAsignaciones(List<Asignacion> asignaciones) {
+		this.asignaciones = asignaciones;
 	}
 }

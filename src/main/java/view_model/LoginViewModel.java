@@ -7,30 +7,26 @@ import org.uqbar.commons.model.annotations.Observable;
 
 import data.DataEstudiantes;
 import domain.Estudiante;
-import model.EstudianteModel;
 
 @Observable
 public class LoginViewModel {
 	
-	private List<EstudianteModel> estudiantes;
-	private EstudianteModel seleccionado;
+	private List<Estudiante> estudiantes;
+	private Estudiante seleccionado;
 	
 	public LoginViewModel() {
-		estudiantes = new ArrayList<EstudianteModel>();
-		//convierto las entidades en modelos
-		DataEstudiantes.getInstancia().getEstudiantes()
-			.forEach(e -> estudiantes.add(new EstudianteModel(e.nombre(), e.legajo(), e.usuario())));
+		estudiantes = DataEstudiantes.getInstancia().getEstudiantes();
 	}
 		
-	public List<EstudianteModel> getEstudiantes() {
+	public List<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
 
-	public EstudianteModel getSeleccionado() {
+	public Estudiante getSeleccionado() {
 		return seleccionado;
 	}
 
-	public void setSeleccionado(EstudianteModel seleccionado) {
+	public void setSeleccionado(Estudiante seleccionado) {
 		this.seleccionado = seleccionado;
 	}
 }

@@ -1,27 +1,25 @@
 package domain;
 
-public class NotaConceptual implements Nota {
+public enum NotaConceptual implements Nota {
+	MB (10.0),
+	MB_menos (9.0),
+	B_mas (8.0),
+	B (7.0),
+	B_menos (6.0),
+	R_mas (5.0),
+	R (4.0),
+	R_menos (3.0),
+	M_mas (2.0),
+	M (1.0);
 	
-	private Letra letra;
+	private Double valor;
 	
-	public NotaConceptual(Letra letra) {
-		this.letra = letra;
+	private NotaConceptual(Double valor) {
+		this.valor = valor;
 	}
 	
 	public Double valor() {
-		switch (letra) {
-			case MB: 		return 10.0;
-			case MB_menos: 	return 9.0;
-			case B_mas: 	return 8.0;
-			case B: 		return 7.0;
-			case B_menos: 	return 6.0;
-			case R_mas:		return 5.0;
-			case R: 		return 4.0;
-			case R_menos: 	return 3.0;
-			case M_mas: 	return 2.0;
-			case M: 		return 1.0;
-			default:		return 0.0;
-		}
+		return valor;
 	}
 
 }

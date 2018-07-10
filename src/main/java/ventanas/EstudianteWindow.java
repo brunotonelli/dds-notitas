@@ -7,11 +7,12 @@ import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import domain.Estudiante;
-import model.EstudianteModel;
+import view_model.DatosViewModel;
+import view_model.NotasViewModel;
 
-public class EstudianteWindow extends SimpleWindow<EstudianteModel> {
+public class EstudianteWindow extends SimpleWindow<Estudiante> {
 	
-	public EstudianteWindow(WindowOwner parent, EstudianteModel model) {
+	public EstudianteWindow(WindowOwner parent, Estudiante model) {
 		super(parent, model);
 	}
 
@@ -23,10 +24,16 @@ public class EstudianteWindow extends SimpleWindow<EstudianteModel> {
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		new Label(mainPanel).setText("Logeado como " + this.getModelObject().getNombre());
+		Estudiante model = this.getModelObject();
+		new Label(mainPanel).setText("Logeado como " + model.getNombre());
 		
-		new Button(mainPanel).setCaption("Ver notas");
-		new Button(mainPanel).setCaption("Modificar datos");
+		new Button(mainPanel)
+		.setCaption("Ver notas")
+		.onClick(() -> new NotasWindow(this, new NotasViewModel(model)).open());
+		
+		new Button(mainPanel)
+		.setCaption("Modificar datos")
+		.onClick(() -> new DatosWindow(this, new DatosViewModel(model)).open());
 	}
 
 }

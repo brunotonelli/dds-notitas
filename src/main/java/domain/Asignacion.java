@@ -3,6 +3,9 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uqbar.commons.model.annotations.Observable;
+
+@Observable
 public class Asignacion {
 	private Tarea tarea;
 	private List<Nota> notas;
@@ -26,15 +29,23 @@ public class Asignacion {
 		return ultimaNota() >= 6;
 	}
 	
-	public Tarea tarea() {
+	public Tarea getTarea() {
 		return tarea;
 	}
 	
-	public List<Nota> notas() {
+	public List<Nota> getNotas() {
 		return notas;
+	}
+	
+	public void setNotas(List<Nota> notas) {
+		this.notas = notas;
 	}
 	
 	public void tarea(Tarea tarea) {
 		this.tarea = tarea;
 	}	
+
+	public boolean esIgualA(Asignacion otra) {
+		return otra.tarea.getNombre() == this.tarea.getNombre(); 
+	}
 }
