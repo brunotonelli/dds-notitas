@@ -6,13 +6,13 @@ import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.Selector;
+import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.ListBuilder;
 import org.uqbar.lacar.ui.model.bindings.Binding;
 
-import data.DataEstudiantes;
 import domain.Estudiante;
 import view_model.LoginViewModel;
 
@@ -31,15 +31,8 @@ public class LoginWindow extends SimpleWindow<LoginViewModel>{
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		
-		new Label(mainPanel).setText("Loguearse como:");
-		
-		Selector<Estudiante> selector = new Selector<Estudiante>(mainPanel);		
-		selector.bindValueToProperty("seleccionado");
-		
-		Binding<Estudiante, Selector<Estudiante>, ListBuilder<Estudiante>> bindingItems = 
-				selector.bindItems(new ObservableProperty<Estudiante>(this.getModelObject(), "estudiantes"));
-		
-		bindingItems.setAdapter(new PropertyAdapter(Estudiante.class, "nombre"));
+		new Label(mainPanel).setText("Legajo:");
+        new TextBox(mainPanel).bindValueToProperty("legajo");
 				
 		new Button(mainPanel)
 	    .setCaption("Log in")

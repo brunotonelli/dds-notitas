@@ -6,15 +6,27 @@ import java.util.Optional;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Observable
 public class Estudiante {
+	
+	@JsonProperty("first_name")
 	private String nombre;
+	
+	@JsonProperty("last_name")
+	private String apellido;
+	
+	@JsonProperty("code")
 	private String legajo;
+	
+	@JsonProperty("github_user")
 	private String usuario;
 	private List<Asignacion> asignaciones;
 	
-	public Estudiante(String nombre, String legajo, String usuario) {
+	public Estudiante(String nombre, String apellido, String legajo, String usuario) {
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuario = usuario;
 		this.asignaciones = new ArrayList<Asignacion>();
@@ -23,10 +35,19 @@ public class Estudiante {
 	public Estudiante() {}
 
 
-	public void actualizarDatos(String nombre, String legajo, String usuario) {
+	public void actualizarDatos(String nombre, String apellido, String legajo, String usuario) {
 		this.nombre = nombre;
+		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuario = usuario;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public void nuevaAsignacion(Asignacion asignacion) {

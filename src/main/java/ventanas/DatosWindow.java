@@ -24,8 +24,11 @@ public class DatosWindow extends SimpleWindow<DatosViewModel> {
     @Override
     protected void createFormPanel(Panel mainPanel) {
 
-        new Label(mainPanel).setText("Nombre y Apellido:");
+        new Label(mainPanel).setText("Nombre:");
         new TextBox(mainPanel).bindValueToProperty("nombre");
+        
+        new Label(mainPanel).setText("Apellido:");
+        new TextBox(mainPanel).bindValueToProperty("apellido");
 
         new Label(mainPanel).setText("Legajo:");
         new TextBox(mainPanel).bindValueToProperty("legajo");

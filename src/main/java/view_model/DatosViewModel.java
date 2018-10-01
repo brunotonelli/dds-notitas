@@ -9,7 +9,8 @@ public class DatosViewModel {
 
     private final Estudiante estudiante;
     private String nombre;
-    private String legajo;
+    private String apellido;
+	private String legajo;
     private String usuario;
 
     public DatosViewModel(Estudiante estudiante) {
@@ -20,7 +21,7 @@ public class DatosViewModel {
     }
 
     public void actualizar() {
-        this.estudiante.actualizarDatos(this.nombre, this.legajo, this.usuario);
+        this.estudiante.actualizarDatos(this.nombre, this.apellido, this.legajo, this.usuario);
         System.out.print("La actualizacion se ha realizado de manera correcta");
     }
 
@@ -47,4 +48,12 @@ public class DatosViewModel {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+    
+    public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 }
