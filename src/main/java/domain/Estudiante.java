@@ -21,7 +21,14 @@ public class Estudiante {
 	}
 	
 	public Estudiante() {}
-	
+
+
+	public void actualizarDatos(String nombre, String legajo, String usuario) {
+		this.nombre = nombre;
+		this.legajo = legajo;
+		this.usuario = usuario;
+	}
+
 	public void nuevaAsignacion(Asignacion asignacion) {
 		asignaciones.add(asignacion);
 	}	
@@ -67,4 +74,5 @@ public class Estudiante {
 	public void setAsignaciones(List<Asignacion> asignaciones) {
 		this.asignaciones = asignaciones;
 	}
+
 }
