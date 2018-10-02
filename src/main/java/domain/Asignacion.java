@@ -5,13 +5,28 @@ import java.util.List;
 
 import org.uqbar.commons.model.annotations.Observable;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Observable
 public class Asignacion {
-	private Tarea tarea;
+	
+	@JsonProperty("id")
+	private Long id;
+	
+	@JsonProperty("title")
+	private String nombre;
+	
+	@JsonProperty("description")
+	private String descripcion;
+	
+	@JsonProperty("grades")
 	private List<Nota> notas;
 	
-	public Asignacion(Tarea tarea) {
-		this.tarea = tarea;
+	public Asignacion() {}
+	
+	public Asignacion(String nombre, String descripcion) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
 		this.notas = new ArrayList<Nota>();
 	}
 	
@@ -19,18 +34,14 @@ public class Asignacion {
 		notas.add(nota);
 	}
 	
-	public Double ultimaNota() {
+	public Nota ultimaNota() {
 		if (notas != null && !notas.isEmpty())
-			return notas.get(notas.size() - 1).valor();
-		return 0.0;
+			return notas.get(notas.size() - 1);
+		return new NotaNumerica("0");
 	}
 	
 	public boolean aprobada() {
-		return ultimaNota() >= 6;
-	}
-	
-	public Tarea getTarea() {
-		return tarea;
+		return ultimaNota().aprobada();
 	}
 	
 	public List<Nota> getNotas() {
@@ -40,12 +51,34 @@ public class Asignacion {
 	public void setNotas(List<Nota> notas) {
 		this.notas = notas;
 	}
-	
-	public void tarea(Tarea tarea) {
-		this.tarea = tarea;
-	}	
 
 	public boolean esIgualA(Asignacion otra) {
-		return otra.tarea.getNombre() == this.tarea.getNombre(); 
+		return otra.getNombre() == this.getNombre(); 
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
+	
 }

@@ -8,6 +8,8 @@ import org.uqbar.commons.model.annotations.Observable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import data.ServiceNotitas;
+
 @Observable
 public class Estudiante {
 	
@@ -22,6 +24,8 @@ public class Estudiante {
 	
 	@JsonProperty("github_user")
 	private String usuario;
+	
+	@JsonProperty("assignments")
 	private List<Asignacion> asignaciones;
 	
 	public Estudiante(String nombre, String apellido, String legajo, String usuario) {
@@ -40,6 +44,7 @@ public class Estudiante {
 		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuario = usuario;
+		new ServiceNotitas().actualizarEstudiante(nombre, apellido, legajo, usuario);
 	}
 
 	public String getApellido() {
@@ -89,7 +94,7 @@ public class Estudiante {
 	}
 	
 	public List<Asignacion> getAsignaciones() {
-		return asignaciones;
+		return new ServiceNotitas().getAsignaciones(legajo);
 	}
 	
 	public void setAsignaciones(List<Asignacion> asignaciones) {

@@ -15,6 +15,7 @@ public class DatosViewModel {
 
     public DatosViewModel(Estudiante estudiante) {
         this.estudiante = estudiante;
+        this.apellido = this.estudiante.getApellido();
         this.nombre = this.estudiante.getNombre();
         this.legajo = this.estudiante.getLegajo();
         this.usuario = this.estudiante.getUsuario();

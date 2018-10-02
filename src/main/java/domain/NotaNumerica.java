@@ -1,13 +1,14 @@
 package domain;
 
-public class NotaNumerica implements Nota {
-	private Double numero;
+public class NotaNumerica extends Nota {
 	
-	public NotaNumerica(Double numero) {
-		this.numero = numero;
+	public NotaNumerica(String valor) {
+		super(valor);
 	}
 
-	public Double valor() {
-		return numero;
+	@Override
+	public boolean aprobada() {
+		double n = Double.parseDouble(valor);
+		return n >= 6;
 	}
 }

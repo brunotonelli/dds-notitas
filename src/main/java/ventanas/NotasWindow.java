@@ -25,6 +25,10 @@ public class NotasWindow extends SimpleWindow<NotasViewModel>  {
 	
 	@Override
 	public void createFormPanel(Panel formPanel) {
+		
+		formPanel.setWidth(500);
+		this.setMinHeight(500);
+		
 		String nombre = this.getModelObject().getNombreEstudiante();
 		this.setTitle("Notas de "+nombre);
 		new Label(formPanel).setText("Notas de "+nombre);
@@ -34,7 +38,7 @@ public class NotasWindow extends SimpleWindow<NotasViewModel>  {
 		
 		Column<Asignacion> columnaNombre = new Column<Asignacion>(tableNotas);
 		columnaNombre.setTitle("Asignacion");
-		columnaNombre.bindContentsToProperty("tarea.nombre");
+		columnaNombre.bindContentsToProperty("nombre");
 		columnaNombre.setFixedSize(200);
 		
 		Column<Asignacion> columnaNota = new Column<Asignacion>(tableNotas);
