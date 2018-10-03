@@ -1,5 +1,6 @@
 package domain;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,14 @@ public class Asignacion {
 	
 	public boolean aprobada() {
 		return ultimaNota().aprobada();
+	}
+	
+	public String estaAprobada() {
+		return aprobada() ? "SÍ" : "NO";
+	}
+	
+	public Color colorNota() {
+		return aprobada() ? Color.GREEN : Color.RED;
 	}
 	
 	public List<Nota> getNotas() {

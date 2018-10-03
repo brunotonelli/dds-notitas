@@ -23,5 +23,9 @@ public class LoginViewModel {
 	public Estudiante getSeleccionado() {
     	return new ServiceNotitas().getEstudiante(legajo);
     }
+	
+	public String getImagePath() {
+	    return "logo.png";
+	}
 
 }

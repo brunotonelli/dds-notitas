@@ -14,7 +14,7 @@ public class NotasViewModel {
 	private List<Asignacion> asignaciones;
 	
 	public NotasViewModel(Estudiante estudiante) {
-		this.nombreEstudiante = estudiante.getNombre();
+		this.nombreEstudiante = estudiante.getNombre() + " " + estudiante.getApellido();
 		this.setAsignaciones(estudiante.getAsignaciones());
 	}
 

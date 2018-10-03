@@ -1,5 +1,6 @@
 package ventanas;
 
+import java.awt.Color;
 import java.util.List;
 
 import org.apache.commons.collections15.Transformer;
@@ -26,28 +27,31 @@ public class NotasWindow extends SimpleWindow<NotasViewModel>  {
 	@Override
 	public void createFormPanel(Panel formPanel) {
 		
-		formPanel.setWidth(500);
-		this.setMinHeight(500);
-		
-		String nombre = this.getModelObject().getNombreEstudiante();
-		this.setTitle("Notas de "+nombre);
-		new Label(formPanel).setText("Notas de "+nombre);
-		
+		this.setMinWidth(300);
+		this.setIconImage("src/main/resources/icono.png");
+		NotasViewModel model = this.getModelObject();
+		this.setTitle("UTN - Notas - " + model.getNombreEstudiante());
+				
 		Table<Asignacion> tableNotas = new Table<>(formPanel, Asignacion.class);
+		tableNotas.setHeight(300);
 		tableNotas.bindItemsToProperty("asignaciones");
 		
 		Column<Asignacion> columnaNombre = new Column<Asignacion>(tableNotas);
 		columnaNombre.setTitle("Asignacion");
 		columnaNombre.bindContentsToProperty("nombre");
-		columnaNombre.setFixedSize(200);
+		columnaNombre.setFixedSize(100);
 		
 		Column<Asignacion> columnaNota = new Column<Asignacion>(tableNotas);
 		columnaNota.setTitle("Notas");
 		columnaNota.bindContentsToProperty("notas").setTransformer(notas -> transformer((List<Nota>) notas));;
 		columnaNota.setFixedSize(200);
 		
-		tableNotas.setHeight(30000);
-		tableNotas.setWidth(60000);
+		Column<Asignacion> columnaAprobada = new Column<Asignacion>(tableNotas);
+		columnaAprobada.setTitle("Aprobado");
+		columnaAprobada.bindContentsToProperty("estaAprobada");
+		columnaAprobada.bindForeground("colorNota");
+		columnaAprobada.setFixedSize(100);
+		
 
 	}
 	

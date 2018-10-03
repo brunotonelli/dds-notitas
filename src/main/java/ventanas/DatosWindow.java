@@ -8,6 +8,7 @@ import org.uqbar.arena.windows.MessageBox;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
+import domain.Estudiante;
 import view_model.DatosViewModel;
 import view_model.NotasViewModel;
 
@@ -23,8 +24,15 @@ public class DatosWindow extends SimpleWindow<DatosViewModel> {
 
     @Override
     protected void createFormPanel(Panel mainPanel) {
+    	DatosViewModel model = this.getModelObject();
+    	
+    	this.setMinWidth(200);
+		this.setMinHeight(200);
+    	
+    	this.setIconImage("src/main/resources/icono.png");
+		this.setTitle("UTN - Datos - " + model.getApellido());
 
-        new Label(mainPanel).setText("Nombre:");
+        new Label(mainPanel).setText("Nombre:").setWidth(200);
         new TextBox(mainPanel).bindValueToProperty("nombre");
         
         new Label(mainPanel).setText("Apellido:");

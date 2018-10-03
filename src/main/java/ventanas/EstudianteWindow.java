@@ -25,15 +25,24 @@ public class EstudianteWindow extends SimpleWindow<Estudiante> {
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
 		Estudiante model = this.getModelObject();
-		new Label(mainPanel).setText("Logeado como " + model.getNombre());
+		
+		this.setMinWidth(200);
+		this.setMinHeight(200);
+		this.setIconImage("src/main/resources/icono.png");
+		this.setTitle("UTN - "+ model.getNombre() + " " + model.getApellido());
+		mainPanel.setWidth(200);
 		
 		new Button(mainPanel)
 		.setCaption("Ver notas")
-		.onClick(() -> new NotasWindow(this, new NotasViewModel(model)).open());
+		.onClick(() -> new NotasWindow(this, new NotasViewModel(model)).open())
+		.setWidth(200)
+		.setHeight(65);		
 		
 		new Button(mainPanel)
 		.setCaption("Modificar datos")
-		.onClick(() -> new DatosWindow(this, new DatosViewModel(model)).open());
+		.onClick(() -> new DatosWindow(this, new DatosViewModel(model)).open())
+		.setWidth(200)
+		.setHeight(65);
 	}
 
 }

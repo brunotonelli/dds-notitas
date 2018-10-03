@@ -28,6 +28,8 @@ public class Estudiante {
 	@JsonProperty("assignments")
 	private List<Asignacion> asignaciones;
 	
+	private String token;
+	
 	public Estudiante(String nombre, String apellido, String legajo, String usuario) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -44,7 +46,7 @@ public class Estudiante {
 		this.apellido = apellido;
 		this.legajo = legajo;
 		this.usuario = usuario;
-		new ServiceNotitas().actualizarEstudiante(nombre, apellido, legajo, usuario);
+		new ServiceNotitas().actualizarEstudiante(nombre, apellido, legajo, usuario, token);
 	}
 
 	public String getApellido() {
@@ -94,7 +96,7 @@ public class Estudiante {
 	}
 	
 	public List<Asignacion> getAsignaciones() {
-		return new ServiceNotitas().getAsignaciones(legajo);
+		return new ServiceNotitas().getAsignaciones(legajo, token);
 	}
 	
 	public void setAsignaciones(List<Asignacion> asignaciones) {

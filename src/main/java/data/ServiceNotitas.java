@@ -29,7 +29,7 @@ public class ServiceNotitas {
 
 	    public Estudiante getEstudiante(String legajo) {	    	
 	    	ClientResponse response = this.client.resource(API).path(STUDENT)
-	    			.header(HttpHeaders.AUTHORIZATION, TOKEN)
+	    			.header(HttpHeaders.AUTHORIZATION, TOKEN)  //cambiar a token parametro
 	                .accept(MediaType.APPLICATION_JSON)
 	                .get(ClientResponse.class);
 	    	
@@ -43,9 +43,9 @@ public class ServiceNotitas {
 	    	return MapperNotitas.mapEstudiante(output);
 	    }
 	    
-	    public List<Asignacion> getAsignaciones(String legajo) {
+	    public List<Asignacion> getAsignaciones(String legajo, String token) {
 	    	ClientResponse response = this.client.resource(API).path(ASSIGNMENTS)
-	    			.header(HttpHeaders.AUTHORIZATION, TOKEN)
+	    			.header(HttpHeaders.AUTHORIZATION, TOKEN)  //cambiar a token parametro
 	                .accept(MediaType.APPLICATION_JSON)
 	                .get(ClientResponse.class);
 	    	
@@ -59,7 +59,7 @@ public class ServiceNotitas {
 	    	return MapperNotitas.mapAsignaciones(output);
 	    }
 	    
-	    public void actualizarEstudiante(String nombre, String apellido, String legajo, String usuario) {
+	    public void actualizarEstudiante(String nombre, String apellido, String legajo, String usuario, String token) {
 	    	String input = "{"
 					+ "\"code\":	\""	+ legajo	+ "\","
 					+ "\"first_name\":	\"" + nombre + "\","
@@ -68,7 +68,7 @@ public class ServiceNotitas {
 					+ "}";
 			
 			ClientResponse response = this.client.resource(API).path(STUDENT)
-	    			.header(HttpHeaders.AUTHORIZATION, TOKEN)
+	    			.header(HttpHeaders.AUTHORIZATION, TOKEN) //cambiar a token parametro
 	                .accept(MediaType.APPLICATION_JSON)
 	                .put(ClientResponse.class, input);
 
